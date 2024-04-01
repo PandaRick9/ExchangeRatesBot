@@ -79,8 +79,8 @@ public class ExchangeRatesBot extends TelegramLongPollingBot {
     private void usdCommand(Long chatId) {
         String formattedText;
         try {
-            var usd = exchangeRatesService.getUSDExchangeRate();
-            var text = "Курс доллара на %s составляет %s рублей";
+            float usd = Float.valueOf( exchangeRatesService.getUSDExchangeRate());
+            var text = "Курс доллара на %s составляет %.2f рублей";
             formattedText = String.format(text, LocalDate.now(), usd);
         } catch (ServiceException e) {
             LOG.error("Ошибка получения курса доллара", e);
@@ -92,9 +92,9 @@ public class ExchangeRatesBot extends TelegramLongPollingBot {
     private void eurCommand(Long chatId) {
         String formattedText;
         try {
-            var usd = exchangeRatesService.getEURExchangeRate();
-            var text = "Курс евро на %s составляет %s рублей";
-            formattedText = String.format(text, LocalDate.now(), usd);
+            float euro =Float.valueOf(exchangeRatesService.getEURExchangeRate());
+            var text = "Курс евро на %s составляет %.2f рублей";
+            formattedText = String.format(text, LocalDate.now(), euro);
         } catch (ServiceException e) {
             LOG.error("Ошибка получения курса евро", e);
             formattedText = "Не удалось получить текущий курс евро. Попробуйте позже.";

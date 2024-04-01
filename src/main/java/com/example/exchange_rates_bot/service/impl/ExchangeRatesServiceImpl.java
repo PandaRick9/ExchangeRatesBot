@@ -19,8 +19,8 @@ import java.io.StringReader;
 @Service
 public class ExchangeRatesServiceImpl implements ExchangeRatesService {
 
-    private static final String USD_XPATH = "/ValCurs//Valute[@ID='R01235']/Value";
-    private static final String EUR_XPATH = "/ValCurs//Valute[@ID='R01239']/Value";
+    private static final String USD_XPATH = "/rates/department/currency[10]/sale";
+    private static final String EUR_XPATH = "/rates/department/currency[2]/sale";
 
     private final CbrClient client;
 
